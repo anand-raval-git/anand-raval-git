@@ -1,0 +1,18 @@
+name: Update README with Hashnode Blog Posts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  blog:
+    name: Latest blog from hashnode
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update README
+        uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          comment_tag_name: "HASHNODE-BLOG-LIST"
+          feed_list: "https://hashnode.com/@anandraval/rss.xml"
